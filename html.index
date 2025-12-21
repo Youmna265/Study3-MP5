@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Survey Randomization</title>
+  <meta charset="UTF-8" />
+  <title>Survey Randomizer – S3P2</title>
+</head>
+<body>
+  <p>
+    Redirecting you to the survey…
+    If nothing happens, <a id="manualLink" href="#">click here</a>.
+  </p>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    // 🔹 Four Google Forms – one per condition
 
-      const surveys = [
-        {
-          condition: "AFS",
-          url: "https://forms.gle/xrmD992FaUUsT5HU8"
-        },
-        {
-          condition: "AFO",
-          url: "https://forms.gle/8rBZiv4YinodXfKG7"
-        },
-        {
-          condition: "AMS",
-          url: "https://forms.gle/5ysriJJDzzvAfNJU8"
-        },
-        {
-          condition: "AMO",
-          url: "https://forms.gle/KUot3LTersfWoJr3A"
-        }
-      ];
+    const destinations = [
+      {
+        name: "AFS",
+        url: "https://forms.gle/ZWc825gNNfho8Rcy9"
+      },
+      {
+        name: "AFO",
+        url: "https://forms.gle/yqoANY61NyVXA7wn6"
+      },
+      {
+        name: "AMS",
+        url: "https://forms.gle/V6VCudNoodsAtMREA"
+      },
+      {
+        name: "AMO",
+        url: "https://forms.gle/oc5Bcq1GTkSZLugx9"
+      }
+    ];
 
-      // Randomize
-      const randomIndex = Math.floor(Math.random() * surveys.length);
-      const selectedSurvey = surveys[randomIndex];
+    // 🎲 Randomly select one survey condition
+    const index = Math.floor(Math.random() * destinations.length);
+    const chosen = destinations[index];
 
-      // Optional: log assignment for debugging
-      console.log("Assigned condition:", selectedSurvey.condition);
+    // Set fallback “click here” link
+    const manualLink = document.getElementById("manualLink");
+    if (manualLink) {
+      manualLink.href = chosen.url;
+    }
 
-      // Redirect
-      window.location.href = selectedSurvey.url;
-    });
+    // Auto-redirect to selected form
+    window.location.replace(chosen.url);
   </script>
-</head>
-
-<body>
-  <p>Redirecting you to the survey…</p>
 </body>
 </html>
