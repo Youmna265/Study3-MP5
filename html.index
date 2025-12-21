@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Randomization</title>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const surveys = [
+        {
+          condition: "AFS",
+          url: "https://forms.gle/xrmD992FaUUsT5HU8"
+        },
+        {
+          condition: "AFO",
+          url: "https://forms.gle/8rBZiv4YinodXfKG7"
+        },
+        {
+          condition: "AMS",
+          url: "https://forms.gle/5ysriJJDzzvAfNJU8"
+        },
+        {
+          condition: "AMO",
+          url: "https://forms.gle/KUot3LTersfWoJr3A"
+        }
+      ];
+
+      // Randomize
+      const randomIndex = Math.floor(Math.random() * surveys.length);
+      const selectedSurvey = surveys[randomIndex];
+
+      // Optional: log assignment for debugging
+      console.log("Assigned condition:", selectedSurvey.condition);
+
+      // Redirect
+      window.location.href = selectedSurvey.url;
+    });
+  </script>
+</head>
+
+<body>
+  <p>Redirecting you to the survey…</p>
+</body>
+</html>
